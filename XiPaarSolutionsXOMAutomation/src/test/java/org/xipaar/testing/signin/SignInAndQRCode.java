@@ -9,6 +9,7 @@ import org.xipaar.testing.pages.DashboardAndQRcode;
 import org.xipaar.testing.pages.SignInPage;
 
 import cucumber.annotation.en.Given;
+import cucumber.annotation.en.Then;
 import cucumber.annotation.en.When;
 
 public class SignInAndQRCode {
@@ -45,30 +46,9 @@ public class SignInAndQRCode {
 	    signin.clickLogin();
 	}
 
-	@When("^User is signed in successfully$")
+	@Then("^User is signed in successfully$")
 	public void User_is_signed_in_successfully(){
 		ResourceBundle res = ResourceBundle.getBundle("resource");
 		boolean result = SignInAssertion.validateURL(driver,res.getString("AfterSignInURL"));
-	}
-
-	@When("^User clicks on Dashboard$")
-	public void User_clicks_on_Dashboard(){
-		dash = new DashboardAndQRcode(driver);
-		dash.dash();
-	}
-
-	@When("^User clicks on QR Code button$")
-	public void User_clicks_on_QR_Code_button(){
-	    dash.clickQR();
-	}
-
-	@When("^User generates new QR code$")
-	public void User_generates_new_QR_code(){
-	    dash.generateNewQRCode();
-	}
-
-	@When("^User downloads pdf$")
-	public void User_downloads_pdf() throws Exception {
-	    dash.downloadpdf();
 	}
 }
